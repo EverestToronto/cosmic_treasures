@@ -14,7 +14,7 @@ CONFIG.copy = {
     artistFname: 'Emily',
     artistCategories: 'PsychedelicArt | Abstract | Illustration',
     artistHeadline: 'Toronto based visual artist',
-    // artistAboutBlurb: `This is the artist's description, about their life and work. Maybe how they got into it, and why they do it. Or what's some of their most notable/exciting work.<br><br><i>"Maybe even an annecdote."</i>`,
+    artistAboutBlurb: `Emily is a self taught artist born and raised in Toronto. Her work ranges from abstract, to photo-realistic, to the psychedelic and sometimes macabre. Detail oriented, she strives to view things from new perspectives - both figuratively and literally. Emily is currently accepting commissions for custom artwork.<br><br><i>"I am fascinated by the mysteries of nature and the cosmos. Through art, I explore my relationship to the universe as a human being."</i>`,
 }
 CONFIG.socialMedia = {
     ig: 'http://instagram.com/cosmic_treasures',
