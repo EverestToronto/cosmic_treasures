@@ -4,7 +4,7 @@
 
     // GLOBAL Variables
     let userUid = CONFIG.uid;
-    let baseURL = '';
+    let baseUrl = '';
 
     // Start Program
     getArtistsPosts();
@@ -13,14 +13,14 @@
 
     // All Functions
     function getArtistsPosts() {
-        if(CONFIG.baseUrl){
-            baseURL = CONFIG.baseUrl;
+        if(CONFIG.uid){
+            baseUrl = CONFIG.baseUrl;
 
-            $.get(baseURL + '/getArtistsPosts?uid=' + userUid,function(data, status) {
+            $.get(baseUrl + '/getArtistsPosts?uid=' + userUid,function(data, status) {
                 createPosts(data);
             });
         } else {
-            console.log("No baseURL defined");
+            console.log("No baseUrl defined");
         }
     }
 
@@ -38,7 +38,7 @@
             ];
 
             let postHTML = '<div class="portfolio all ' + post.category + '" data-cat="logo">' +
-                '<a href="/portfolio?id=' + key + '" class="portfolio-wrapper">' +
+                '<a href="' + CONFIG.subdomain + '/portfolio?id=' + key + '" class="portfolio-wrapper">' +
                     '<img src="' + postImgUrl + '" alt="" />' +
                 '</a>' +
             '</div>';

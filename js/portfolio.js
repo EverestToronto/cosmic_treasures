@@ -4,7 +4,8 @@
 
     // FILE Variables
     let artistUid = CONFIG.uid;
-    let baseURL = '';
+    let baseUrl = '';
+    let pieceId;
 
     CONFIG.copy._headerFooterComponents();
 
@@ -20,22 +21,23 @@
     $('.purchaseFormSubmit').click(function() {
 
         if($('#formPhone').val().length < 10) {
-            alert('The phone number must be ')
+            alert('The phone number must be 10 digits.')
         } else {
             let purchaseForm = {
                 name: $('#formName').val(),
                 phone: $('#formPhone').val(),
                 email: $('#formEmail').val(),
-                artistUid: artistUid
+                artistUid: artistUid,
+                pieceId: pieceId
             }
 
             console.log(purchaseForm);
 
-            $.post(baseURL + '/submitPurchaseForm', purchaseForm,function(data, status) {
+            $.post(baseUrl + '/submitPurchaseForm', purchaseForm,function(data, status) {
                 console.log(status)
                 if(status === 'success') {
                     cleanForm()
-                    alert('Thanks! We\'ll contact you shortly');
+                    alert('Thanks! We\'ll contact you shortly.');
                 }
             })
 
@@ -46,9 +48,10 @@
     // All Functions
     function getAndUpdatePostDetails() {
         if(CONFIG.baseUrl) {
-            const baseURL = CONFIG.baseUrl;
-            $.get(baseURL + '/getArtistsPosts?uid=' + artistUid,function(data, status) {
+            baseUrl = CONFIG.baseUrl;
+            $.get(baseUrl + '/getArtistsPosts?uid=' + artistUid,function(data, status) {
                 let id = getUrlParameter('id');
+                pieceId = id;
                 console.log(data[id])
 
                 $('#pieceName').text(data[id].pieceName)
@@ -62,7 +65,7 @@
                 $('#piecePrice').text('$'+data[id].price + '.00');
             });
         } else {
-            console.log("No baseURL defined");
+            console.log("No baseUrl defined");
         }
     }
 

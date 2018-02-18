@@ -8,6 +8,7 @@ let CONFIG = {};
 // Artist id:
 CONFIG.uid = 'o9CeUAqrd2c68PFlqbXFEkrnCij2';
 CONFIG.baseUrl = 'https://us-central1-art-auction-2ef27.cloudfunctions.net';
+CONFIG.subdomain = ''; // '/github_username'
 
 CONFIG.copy = {
     artistName: 'CosmicTreasures',
@@ -43,6 +44,8 @@ CONFIG.copy._updateHomepageCopy = function() {
 
 CONFIG.copy._headerFooterComponents = function() {
     CONFIG.copy.artistName ? 
+        updateTitleTag() : null;
+    CONFIG.copy.artistName ? 
         $('.j_artistName').text(CONFIG.copy.artistName): null;
     CONFIG.copy.artistName ? 
         $('.j_footerCopyright').text(CONFIG.copy.artistName + ' | Copyright 2018.'): null;
@@ -52,4 +55,9 @@ CONFIG.copy._headerFooterComponents = function() {
         $('.j_fbUrl').attr('href', CONFIG.socialMedia.fb) : $('.j_fbUrl').hide();   
     CONFIG.socialMedia.twitter ?
         $('.j_twitterUrl').attr('href', CONFIG.socialMedia.twitter) : $('.j_twitterUrl').hide();   
+}
+
+var updateTitleTag = function() {
+    console.log('title')
+    document.title = CONFIG.copy.artistName + " | Toronto Based Artist";
 }
